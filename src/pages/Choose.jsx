@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Header from "../components/Header";
-import { Button, TextField } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { Context } from "../provider/Provider";
 import { useNavigate } from "react-router";
 
 function Choose() {
-  const [questionsNumber, setQuestionsNumber] = useState(0);
-  const { setData } = useContext(Context)
+  const { setData, questionsNumber } = useContext(Context)
   const navigate = useNavigate()
 
   const getQuestions = async () => {
@@ -18,13 +17,10 @@ function Choose() {
 
   return (
     <div className="choose">
-      <Header />
-      <h1>Trivia</h1>
-      <h3>Choose a number of questions to answer</h3>
-      <TextField onChange={ ({ target }) => setQuestionsNumber(target.value ) } type="number" placeholder="0" />
+      <Header score="0" />
       <div>
         <Button onClick={ getQuestions } color="primary" variant="contained">Start</Button>
-        <Button color="secondary" variant="contained">Cancel</Button>
+        <Button onClick={ () => navigate('/') } color="secondary" variant="contained">Cancel</Button>
       </div>
     </div>
   )
