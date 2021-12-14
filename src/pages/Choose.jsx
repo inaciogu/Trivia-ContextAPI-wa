@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Header from "../components/Header";
 import { Button, TextField } from "@material-ui/core";
+import { Context } from "../provider/Provider";
+import { useNavigate } from "react-router";
 
 function Choose() {
   const [questionsNumber, setQuestionsNumber] = useState(0);
+  const { setData } = useContext(Context)
+  const navigate = useNavigate()
 
   const getQuestions = async () => {
     const request = await fetch(`https://opentdb.com/api.php?amount=${questionsNumber}`)
     const json = await request.json();
-    console.log(json)
+    setData(json.results);
+    navigate('/game');
   }
 
   return (
