@@ -1,4 +1,4 @@
-# Jogo de Trivia!
+# Trivia!
 ## Teste Técnico do processo seletivo para desenvolvedor Front End Junior da WA Project.
 ### Descrição do Problema
 
