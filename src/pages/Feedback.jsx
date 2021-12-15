@@ -2,12 +2,15 @@ import React, { useContext } from "react";
 import { Context } from "../context/Provider";
 import { AiOutlineCheck } from 'react-icons/ai'
 import Header from "../components/Header";
+import { Button } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
 
 function Feedback() {
   const { data } = useContext(Context);
   const score = localStorage.getItem('score')
   const getAnswers = localStorage.getItem('answers')
   const answers = JSON.parse(getAnswers)
+  const navigate = useNavigate()
   return (
     <div>
       <Header score={score} />
@@ -19,6 +22,7 @@ function Feedback() {
           ) : <p>{`${answer} - Correct answer: ${data[index].correct_answer}`}</p>
         ))}
       </div>
+      <Button onClick={ () => navigate('/') } variant="contained" color="secondary">Go Home</Button>
     </div>
   );
 }
