@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Header from "../components/Header";
 import { Button } from "@material-ui/core";
-import { Context } from "../provider/Provider";
+import { Context } from "../context/Provider";
 import { useNavigate } from "react-router";
 
 function Choose() {

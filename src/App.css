@@ -1,7 +1,117 @@
+body {
+  overflow: hidden;
+  background-image: linear-gradient(-45deg, #725AE8, #717FFF, #5A8EE8);
+  height: 100vh;
+  background-size: 300% 300%;
+  animation: gradient 4s ease-in-out infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+header {
+  height: 70px;
+  background-color: #222121;
+  top: auto;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  box-shadow: 0 0 10px 1px #313131;
+}
+
+.trivia-logo {
+  animation: slide 2s, ease-in-out;
+}
+
+.wa-logo {
+  animation: slide-right 2s ease-out;
+}
+
+.wa-logo img {
+  border-radius: 10px;
+  margin-bottom: 6px;
+}
+
+.logo-box {
+  display: flex;
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(-1000%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translatey(-200%);
+  }
+  to {
+    transform: translatey(0%);
+  }
+}
+
 .App {
   text-align: center;
 }
 
 .choose button {
   margin: 15px;
+}
+
+.center {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.center button {
+  justify-content: center;
+  justify-self: center;
+}
+
+.center div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2px;
+}
+
+.center p {
+  font-size: 1.5rem;
+}
+
+.answers button {
+  width: 350px;
+  font-size: 1rem;
+  border: 1px solid black;
+  border-radius: 2%;
+  margin: 5px;
+  height: 45px;
+  transition: 0.5s;
+  background: none;
+  cursor: pointer;
+}
+
+.answers button:hover {
+  background-color: rgba(216, 216, 216, 0.205);
+}
+
+.center input {
+  width: 300px;
+  justify-content: center;
 }
