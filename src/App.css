@@ -107,6 +107,10 @@ header {
   cursor: pointer;
 }
 
+ol li {
+ line-height: 50px;
+}
+
 .answers button:hover {
   background-color: rgba(216, 216, 216, 0.205);
 }

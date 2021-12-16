@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
+import '../App.css'
 import { Context } from "../context/Provider";
 import { AiOutlineCheck } from 'react-icons/ai'
+import { BsXLg } from 'react-icons/bs'
 import Header from "../components/Header";
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
@@ -15,13 +17,18 @@ function Feedback() {
     <div>
       <Header score={score} />
       <h1>Feedback</h1>
-      <div>
+      <ol>
         {answers.questions.map((answer, index) => (
-          answer.includes('correct') ? (
-            <p>{answer.replace('correct', '')} <AiOutlineCheck /></p>
-          ) : <p>{`${answer} - Correct answer: ${data[index].correct_answer}`}</p>
+          answer.includes(data[index].correct_answer) ? (
+            <li key={index}>
+              {answer} <AiOutlineCheck />
+            </li>
+          ) : 
+          <li>
+            {answer} <BsXLg /> - Correct answer: {data[index].correct_answer}
+          </li>
         ))}
-      </div>
+      </ol>
       <Button onClick={ () => navigate('/') } variant="contained" color="secondary">Go Home</Button>
     </div>
   );

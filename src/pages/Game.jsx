@@ -6,6 +6,9 @@ import { Context } from "../context/Provider";
 
 function Game() {
   const { data, setAnswers, answers } = useContext(Context);
+  const [greenBorder, setGreenBorder] = useState(false);
+  const [redBorder, setRedBorder] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const [index, setIndex] = useState(0)
   const [score, setScore] = useState(0)
   const navigate = useNavigate()
@@ -19,10 +22,9 @@ function Game() {
     } else {
       setIndex(index + 1)
     }
-    document.querySelector('.correct_answer').style.border = '';
-    document.querySelectorAll('.incorrect_answers').forEach((answer) => {
-      answer.style.border = '';
-    });
+    setClicked(false);
+    setGreenBorder(false);
+    setRedBorder(false);
   }
 
   useEffect(() => {
@@ -30,19 +32,17 @@ function Game() {
   }, [answers])
 
   const addScore = ({ target }) => {
+    setClicked(!clicked);
     if (target.className !== 'incorrect_answers') {
-      setAnswers({...answers, questions: [...answers.questions, data[index].question + ' - ' + target.value + 'correct']});
+      setAnswers({...answers, questions: [...answers.questions, data[index].question + ' - ' + target.value]});
       setScore(score + 20);
-      target.style.border = '1px solid green';
-      document.querySelectorAll('.incorrect_answers').forEach((answer) => {
-        answer.style.border = '1px solid red';
-      })
+      setGreenBorder(true)
+      setRedBorder(true)
     }
     if (target.className === 'incorrect_answers') {
       setAnswers({...answers, questions: [...answers.questions, data[index].question + ' - ' + target.value]});
-      target.style.border = '1px solid red';
-      document.querySelector('.correct_answer')
-        .style.border = '1px solid green';
+      setRedBorder(true);
+      setGreenBorder(true)
     }
   }
 
@@ -53,9 +53,9 @@ function Game() {
         <p>{data.length && data[index].question}</p>
         <div className="answers">
           {data[index].incorrect_answers.map((answer, i) => (
-            <button value={answer} className="incorrect_answers" onClick={ addScore } key={i} type="button">{answer}</button>
+            <button style={{ borderColor: redBorder && 'red' }} disabled={ clicked } value={answer} className="incorrect_answers" onClick={ addScore } key={i} type="button">{answer}</button>
           ))}
-          <button value={data[index].correct_answer} className="correct_answer" onClick={ addScore }>{data[index].correct_answer}</button>
+          <button style={{ borderColor: greenBorder && 'green' }} disabled={ clicked } value={data[index].correct_answer} className="correct_answer" onClick={ addScore }>{data[index].correct_answer}</button>
         </div>
         <Button onClick={ nextQuestion } variant="contained" color="primary">Next</Button>
       </div>
