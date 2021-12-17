@@ -35,7 +35,7 @@ function Game() {
     setClicked(!clicked);
     if (target.className !== 'incorrect_answers') {
       setAnswers({...answers, questions: [...answers.questions, data[index].question + ' - ' + target.value]});
-      setScore(score + 20);
+      setScore(score + 1);
       setGreenBorder(true)
       setRedBorder(true)
     }
