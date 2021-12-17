@@ -17,6 +17,7 @@ function Game() {
     setIndex(index === data.length - 1 ? navigate('/feedback') : index + 1);
     if (index === data.length - 1) {
       localStorage.setItem('score', score);
+      localStorage.setItem('data', JSON.stringify(data))
       localStorage.setItem('answers', JSON.stringify(answers));
       navigate('/feedback');
     } else {

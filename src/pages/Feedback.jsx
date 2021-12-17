@@ -8,7 +8,8 @@ import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 
 function Feedback() {
-  const { data } = useContext(Context);
+  const getData = localStorage.getItem('data');
+  const data = JSON.parse(getData);
   const score = localStorage.getItem('score')
   const getAnswers = localStorage.getItem('answers')
   const answers = JSON.parse(getAnswers)
@@ -29,7 +30,7 @@ function Feedback() {
           </li>
         ))}
       </ol>
-      <Button onClick={ () => navigate('/') } variant="contained" color="secondary">Go Home</Button>
+      <Button style={{ padding: '10px', marginBottom: '15px' }} onClick={ () => navigate('/') } variant="contained" color="secondary">Go Home</Button>
     </div>
   );
 }
