@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
-import '../App.css'
-import { Context } from "../context/Provider";
+import React from "react";
+import '../App.css';
 import { AiOutlineCheck } from 'react-icons/ai'
 import { BsXLg } from 'react-icons/bs'
 import Header from "../components/Header";
