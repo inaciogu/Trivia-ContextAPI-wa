@@ -58,7 +58,7 @@ function Game() {
           ))}
           <button style={{ borderColor: greenBorder && 'green' }} disabled={ clicked } value={data[index].correct_answer} className="correct_answer" onClick={ addScore }>{data[index].correct_answer}</button>
         </div>
-        <Button onClick={ nextQuestion } variant="contained" color="primary">Next</Button>
+        <Button disabled={ !redBorder || !greenBorder } onClick={ nextQuestion } variant="contained" color="primary">Next</Button>
       </div>
     </div>
   )
